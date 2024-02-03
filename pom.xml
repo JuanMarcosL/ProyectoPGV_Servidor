@@ -17,7 +17,7 @@
     <dependency>
         <groupId>com.github.oshi</groupId>
         <artifactId>oshi-core</artifactId>
-        <version>5.7.5</version>
+        <version>6.4.9</version>
     </dependency>
         <dependency>
             <groupId>com.profesorfalken</groupId>
@@ -30,6 +30,15 @@
             <artifactId>slf4j-api</artifactId>
             <version>1.7.32</version>
         </dependency>
+        <dependency>
+            <groupId>com.outr.javasysmon</groupId>
+            <artifactId>javasysmon_2.10</artifactId>
+            <version>0.3.4</version>
+        </dependency>
+
+
+
+
     </dependencies>
 
 </project>

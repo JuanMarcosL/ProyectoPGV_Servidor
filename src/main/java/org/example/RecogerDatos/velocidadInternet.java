@@ -37,7 +37,7 @@ public class velocidadInternet {
                 double velocidadMbps = (totalBytesRead * 8.0 / 1024.0 / 1024.0) / (tiempoTotal / 1000.0);
 
                 // Construir el mensaje final
-                velocidadInternetStr = "Velocidad de Internet: " + String.format("%.3f", velocidadMbps).replace(',', '.') + " Mbps";
+                velocidadInternetStr = String.format("%.2f", velocidadMbps).replace(',', '.');
                 //System.out.println(velocidadInternetStr);
                 System.out.flush();  // Forzar la liberación del búfer
 

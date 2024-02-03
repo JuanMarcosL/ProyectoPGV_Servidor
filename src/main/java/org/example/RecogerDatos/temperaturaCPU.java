@@ -58,4 +58,9 @@ public class temperaturaCPU {
             e.printStackTrace();
         }
     }
+
+    public static void main(String[] args) {
+        temperaturaCPU temp = new temperaturaCPU();
+        temp.iniciarMonitorizacion();
+    }
 }
