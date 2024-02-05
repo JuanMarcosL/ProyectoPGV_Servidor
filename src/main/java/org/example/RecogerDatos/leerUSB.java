@@ -4,8 +4,10 @@ import java.nio.file.FileStore;
 import java.nio.file.FileSystems;
 
 public class leerUSB {
+    private String storageInfo;
+
     public String obtenerAlmacenamiento() {
-        StringBuilder storageInfo = new StringBuilder();
+        StringBuilder storageInfoBuilder = new StringBuilder();
 
         try {
             // Obtener todos los FileStore disponibles
@@ -15,31 +17,39 @@ public class leerUSB {
             for (FileStore fileStore : fileStores) {
                 try {
                     // Imprimir información sobre cada FileStore
-                    storageInfo.append("Nombre Disco: ").append(fileStore).append(" ");
-                    storageInfo.append(",Tipo: ").append(fileStore.type()).append(" ");
+                    storageInfoBuilder.append(fileStore).append("_");
+                    storageInfoBuilder.append(fileStore.type()).append("_");
+                    storageInfoBuilder.append(fileStore.getTotalSpace()).append("_");
+                    double usagePercentage = porcentajeDeUso(fileStore);
+                    storageInfoBuilder.append(String.format("%.2f", usagePercentage).replace(',', '.')).append("#");
+
 
                     // Obtener el porcentaje de uso de almacenamiento
-                    double usagePercentage = porcentajeDeUso(fileStore);
-                    storageInfo.append(",Porcentaje de uso: ").append(String.format("%.2f", usagePercentage).replace(',', '.')).append("% ,");
+//                    double usagePercentage = porcentajeDeUso(fileStore);
+//                    storageInfoBuilder.append(String.format("%.2f", usagePercentage).replace(',', '.')).append("#");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
 
+            // Eliminar el último delimitador '#'
+            if (storageInfoBuilder.length() > 0) {
+                storageInfoBuilder.setLength(storageInfoBuilder.length() - 1);
+            }
+
             // Devolver la información almacenada como un String
-            return storageInfo.toString();
+            storageInfo = storageInfoBuilder.toString();
+            return storageInfo;
         } catch (Exception e) {
             e.printStackTrace();
             return "Error al obtener la información del almacenamiento.";
         }
     }
 
-    /**
-     * Obtiene el porcentaje de uso de almacenamiento para un FileStore específico.
-     *
-     * @param fileStore FileStore para el cual se desea obtener el porcentaje de uso.
-     * @return Porcentaje de uso de almacenamiento para el FileStore.
-     */
+    public String getStorageInfo() {
+        return storageInfo;
+    }
+
     private static double porcentajeDeUso(FileStore fileStore) {
         try {
             long totalSpace = fileStore.getTotalSpace();

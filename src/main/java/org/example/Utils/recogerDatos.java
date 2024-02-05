@@ -36,19 +36,16 @@ public class recogerDatos {
     private void recogerYEnviarDatos() {
         String cargaCPUStr = obtenerCarga.obtenerCargaCPU();
         String usoRAMStr = usoDeRAM.obtenerUsoRAM();
-        //String velocidadInternetStr = velocInternet.obtenerVelocidadInternet();
-       // String leerUSBStr = "";
-//        try {
-//            leerUSBStr = lectorUSB.obtenerAlmacenamiento();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        String leerUSBStr = lectorUSB.obtenerAlmacenamiento();
+        String velocidadInternetStr = (velocInternet.obtenerVelocidadInternet()) + "";
 
         mensaje.setLength(0);  // Limpiar el StringBuilder
-        mensaje.append(usoRAMStr).append(", ");
-        mensaje.append(cargaCPUStr).append(", ");
-      //  mensaje.append(velocidadInternetStr).append(", ");
-       // mensaje.append(leerUSBStr);
+        mensaje.append(usoRAMStr).append(",");
+        mensaje.append(cargaCPUStr).append(",");
+        mensaje.append("[");
+        mensaje.append(leerUSBStr).append("],");
+        mensaje.append(velocidadInternetStr);
+
 
         System.out.println(mensaje.toString());
     }

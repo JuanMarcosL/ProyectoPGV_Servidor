@@ -48,7 +48,7 @@ public class cargaCPU {
         }
 
         // Castea los datos para mostrar un porcentaje
-        double cpuUsage = processor.getSystemCpuLoadBetweenTicks(prevTicks) * 100;
+        double cpuUsage = 5.0 + (processor.getSystemCpuLoadBetweenTicks(prevTicks)  * 100);
 
         // Devuelve el uso de la CPU como un String
         return String.format("%.2f", cpuUsage).replace(',', '.');
