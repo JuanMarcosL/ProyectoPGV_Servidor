@@ -46,7 +46,6 @@ public class recogerDatos {
         mensaje.append(leerUSBStr).append("],");
         mensaje.append(velocidadInternetStr);
 
-
         System.out.println(mensaje.toString());
     }
 }

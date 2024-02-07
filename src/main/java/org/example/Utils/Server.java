@@ -12,6 +12,7 @@ public class Server {
     private static recogerDatos recogerDatos = new recogerDatos();
 
     public static void main(String[] args) throws IOException {
+
         int port = 6789;
         ServerSocket welcomeSocket = new ServerSocket(port);
 
@@ -37,7 +38,7 @@ public class Server {
 
                                 DataOutputStream outToClient = new DataOutputStream(connectionSocket.getOutputStream());
                                 String mensajeFinal = recogerDatos.getMensaje().toString();
-                                System.out.println("En server" + mensajeFinal);
+                                //System.out.println("En server" + macAddress + "," + mensajeFinal);
                                 outToClient.writeBytes(mensajeFinal + "\n");
                             } else {
                                 this.cancel(); // Cancela la tarea si la conexión está cerrada

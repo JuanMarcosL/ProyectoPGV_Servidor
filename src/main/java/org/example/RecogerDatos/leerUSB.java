@@ -24,9 +24,6 @@ public class leerUSB {
                     storageInfoBuilder.append(String.format("%.2f", usagePercentage).replace(',', '.')).append("#");
 
 
-                    // Obtener el porcentaje de uso de almacenamiento
-//                    double usagePercentage = porcentajeDeUso(fileStore);
-//                    storageInfoBuilder.append(String.format("%.2f", usagePercentage).replace(',', '.')).append("#");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
