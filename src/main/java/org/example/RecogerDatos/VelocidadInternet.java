@@ -5,7 +5,15 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 
-public class velocidadInternet {
+/**
+ * Clase que se encarga de medir la velocidad de Internet.
+ */
+public class VelocidadInternet {
+
+    /**
+     * Método que obtiene la velocidad de Internet.
+     * @return La velocidad de Internet en megabits por segundo (Mbps) como un String.
+     */
     public String obtenerVelocidadInternet() {
         String velocidadInternetStr;
         try {
@@ -41,4 +49,3 @@ public class velocidadInternet {
         return velocidadInternetStr;
     }
 }
-

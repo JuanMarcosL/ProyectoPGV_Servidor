@@ -4,6 +4,10 @@
     <option name="sdkName" value="Python 3.11" />
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="JavadocGenerationManager">
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/../../JavaDocServidor" />
+    <option name="OPTION_SCOPE" value="public" />
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>

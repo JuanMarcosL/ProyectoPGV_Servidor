@@ -1,38 +1,54 @@
 package org.example.Utils;
 
-import org.example.RecogerDatos.cargaCPU;
-import org.example.RecogerDatos.leerUSB;
-import org.example.RecogerDatos.usoRAM;
-import org.example.RecogerDatos.velocidadInternet;
+import org.example.RecogerDatos.CargaCPU;
+import org.example.RecogerDatos.Discos;
+import org.example.RecogerDatos.UsoRam;
+import org.example.RecogerDatos.VelocidadInternet;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Clase que se encarga de recoger y enviar datos del sistema.
+ */
 public class recogerDatos {
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-    private final cargaCPU obtenerCarga;
-    private final usoRAM usoDeRAM;
-    private final velocidadInternet velocInternet;
-    private final leerUSB lectorUSB;
+    private final CargaCPU obtenerCarga;
+    private final UsoRam usoDeRAM;
+    private final VelocidadInternet velocInternet;
+    private final Discos lectorUSB;
 
     private static StringBuilder mensaje = new StringBuilder();
 
+    /**
+     * Constructor de la clase que inicializa los objetos para obtener los datos del sistema.
+     */
     public recogerDatos() {
-        obtenerCarga = new cargaCPU();
-        usoDeRAM = new usoRAM();
-        velocInternet = new velocidadInternet();
-        lectorUSB = new leerUSB();
+        obtenerCarga = new CargaCPU();
+        usoDeRAM = new UsoRam();
+        velocInternet = new VelocidadInternet();
+        lectorUSB = new Discos();
     }
 
+    /**
+     * Método para obtener el mensaje.
+     * @return El mensaje recopilado.
+     */
     public static StringBuilder getMensaje() {
         return mensaje;
     }
 
+    /**
+     * Inicia la monitorización de los datos.
+     */
     public void iniciarMonitorizacion() {
         scheduler.scheduleAtFixedRate(this::recogerYEnviarDatos, 0, 1, TimeUnit.SECONDS);
     }
 
+    /**
+     * Recoge y envía los datos al cliente.
+     */
     private void recogerYEnviarDatos() {
         String cargaCPUStr = obtenerCarga.obtenerCargaCPU();
         String usoRAMStr = usoDeRAM.obtenerUsoRAM();

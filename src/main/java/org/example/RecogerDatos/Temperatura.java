@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
-public class temperaturaCPU {
+public class Temperatura {
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
     public void iniciarMonitorizacion() {
@@ -60,7 +60,7 @@ public class temperaturaCPU {
     }
 
     public static void main(String[] args) {
-        temperaturaCPU temp = new temperaturaCPU();
+        Temperatura temp = new Temperatura();
         temp.iniciarMonitorizacion();
     }
 }

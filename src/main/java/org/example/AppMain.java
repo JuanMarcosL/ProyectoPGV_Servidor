@@ -1,4 +1,6 @@
-package org.example.Utils;
+package org.example;
+
+import org.example.Utils.recogerDatos;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -7,10 +9,18 @@ import java.net.Socket;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Server {
+/**
+ * Clase principal de la aplicación que implementa un servidor.
+ */
+public class AppMain {
 
-    private static recogerDatos recogerDatos = new recogerDatos();
+    private static org.example.Utils.recogerDatos recogerDatos = new recogerDatos();
 
+    /**
+     * Método principal que inicia el servidor y acepta conexiones entrantes.
+     * @param args Argumentos de línea de comandos (no se utilizan).
+     * @throws IOException Si hay un error de entrada/salida al trabajar con sockets.
+     */
     public static void main(String[] args) throws IOException {
 
         int port = 6789;
@@ -38,7 +48,7 @@ public class Server {
 
                                 DataOutputStream outToClient = new DataOutputStream(connectionSocket.getOutputStream());
                                 String mensajeFinal = recogerDatos.getMensaje().toString();
-                                //System.out.println("En server" + macAddress + "," + mensajeFinal);
+                                // Envía el mensaje al cliente
                                 outToClient.writeBytes(mensajeFinal + "\n");
                             } else {
                                 this.cancel(); // Cancela la tarea si la conexión está cerrada
